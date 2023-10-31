@@ -1,0 +1,115 @@
+p {
+  margin: 0;
+}
+
+.section {
+  padding-top: 2rem;
+}
+
+.plain {
+  display: flex;
+  place-items: center;
+  height: 100vh;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: "area1" "area2" "area3" "area4" "area5";
+  grid-auto-flow: dense;
+  row-gap: 10px;
+}
+.wrapper div:nth-child(n + 4) {
+  display: none;
+}
+
+.flexer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.section h1 {
+  padding-left: 1rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .wrapper {
+    gap: 10px;
+  }
+  .wrapper div:nth-child(-n + 4) {
+    display: block;
+  }
+
+  .flexer > div {
+    max-width: 33%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas: "area1 area2" "area3 area4";
+  }
+
+  .flexer {
+    flex-direction: row;
+    column-gap: 1rem;
+  }
+  .flexer div {
+    flex: 1 1 0px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: minmax(auto, 45%) repeat(2, 1fr);
+    grid-template-rows: 1.5fr 1fr;
+    grid-template-areas: "area1 area2 area3" "area1 area4 area5";
+    grid-auto-flow: dense;
+    gap: 2rem;
+  }
+  .wrapper div:nth-child(-n + 5) {
+    display: block;
+  }
+  .wrapper .container:nth-of-type(1) figure figcaption p:nth-of-type(2) {
+    display: -webkit-box;
+  }
+  .wrapper .container figure figcaption p:nth-of-type(1) {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .container:nth-last-child(-n + 2) figure img {
+    display: none !important;
+  }
+  .container:nth-last-child(-n + 2) figure figcaption {
+    top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .flexer {
+    column-gap: 2rem;
+  }
+  .flexer div figcaption p:nth-of-type(2) {
+    display: -webkit-box;
+  }
+}
+
+@media only screen and (min-width: 1536px) {
+  .wrapper div:nth-child(n) {
+    display: block;
+  }
+
+  .section h1 {
+    padding-left: 0;
+  }
+}
